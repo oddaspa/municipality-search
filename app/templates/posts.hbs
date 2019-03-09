@@ -1,0 +1,11 @@
+<h1> This is our post route </h1>
+{{ outlet }}
+
+{{#each model as  |post|}}
+  <h3>Name: {{ post.description }}</h3>
+  <p> Code: {{ post.label }} </p>
+  <p> By: {{ post.lang }}</p>
+  <p> Status: {{ post.status }} </p>
+  <p> Date Subitted: {{post.dateSubmitted}} </p>
+
+{{/each}}
