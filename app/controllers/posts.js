@@ -4,15 +4,15 @@ export default Controller.extend({
   actions: {
     filterByName(param) {
       if (param !== '') {
-        let kukk = this.store
+        let tmp = this.store
         .query('post', {description: param }).then((results) => {
           //console.log(filteredResults);
           return {query: param, results: results.results};
         });
         //console.log(results);
-        console.log(kukk);
+        console.log(tmp);
 
-        return kukk;
+        return tmp;
       } else {
         console.log("no search");
         return this.store

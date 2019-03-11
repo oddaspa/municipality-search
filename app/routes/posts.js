@@ -4,11 +4,11 @@ import Route from '@ember/routing/route';
 export default Route.extend({
   model(){
   var store = this.store;
-  let fuck = store.findAll('post', { description: "Lindås" });
+  let origin = store.findAll('post');
   console.log("ROUTE");
-  console.log(fuck);
+  console.log(origin);
 
-    return fuck;
+    return origin;
   }
 });
 
