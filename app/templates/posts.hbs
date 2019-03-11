@@ -9,27 +9,18 @@
   <p> Date Subitted: {{post.dateSubmitted}} </p>
 {{/each}}
 -->
+<div class="box-set">
 
-<ListFilter
+<ListFilter class="box"
   @filter={{action "filterByName"}}
   as |filteredResults|
   >
-  <!--
-  <ul>
-  {{#each filteredResults as |post|}}
-    <li>{{post.description}}</li>
-    <ol>
-    {{#each post as |item|}}
-      <li>{{item}}</li>
-    {{/each}}
-  </ol>
-  {{/each}}
-</ul>
--->
   <ul class="results">
     {{#each filteredResults as |post|}}
       <li><PostListing @post={{post}} /></li>
     {{/each}}
   </ul>
 </ListFilter>
+<RadioButtons class="box"/>
+</div>
 {{outlet}}

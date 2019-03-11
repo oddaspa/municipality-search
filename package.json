@@ -47,5 +47,8 @@
   },
   "engines": {
     "node": "6.* || 8.* || >= 10.*"
+  },
+  "dependencies": {
+    "ember-radio-buttons": "^4.1.0"
   }
 }

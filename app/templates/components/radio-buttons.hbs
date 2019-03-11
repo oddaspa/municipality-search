@@ -1,0 +1,23 @@
+{{radio-button
+  value='one'
+  groupValue=number
+  checked=selectedNumber
+  changed="valueToggeled"
+}}
+
+{{radio-button
+  value='two'
+  groupValue=number
+  checked=selectedNumber
+  changed="valueToggeled"
+}}
+
+{{radio-button
+  value='three'
+  groupValue=number
+  checked=selectedNumber
+  changed="valueToggeled"
+}}
+<h3> This is current value: {{this.groupValue}} </h3>
+
+{{yield}}

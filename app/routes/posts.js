@@ -2,13 +2,16 @@ import Route from '@ember/routing/route';
 
 
 export default Route.extend({
-  model(){
+  model(queryParams){
   var store = this.store;
-  let origin = store.findAll('post');
-  console.log("ROUTE");
-  console.log(origin);
 
-    return origin;
+  let query1 = "Naustdal";
+  console.log("ROUTE");
+  console.log(this.store.query('post', { description: queryParams }));
+
+    return this.store.findAll('post');
+    // Returns localhost?
+    //return this.store.query('post', { description: queryParams });
   }
 });
 
@@ -17,7 +20,7 @@ export default Route.extend({
   model(params) {
     return this.store.findAll('post')
     .then(function(post) {
-      console.log("ROUTE :DDDDDDDD");
+      console.log("ROUTE");
       console.log(post);
     });
   }

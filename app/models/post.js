@@ -5,19 +5,26 @@ const {
 } = DS;
 
 export default DS.Model.extend({
-  /*
-  userId: belongsTo('user'),
-
-  title: attr('string'),
-  body: attr('string')
-  */
-  lang: attr(),
-  containedItemClass: attr(),
-  description: attr('string'),
+  // defined by https://register.geonorge.no/api/subregister/sosi-kodelister/kartverket/kommunenummer-alle.json
   label: attr('string'),
+  lang: attr('string'),
+  itemclass: attr('string'),
+  uuid: attr('string'),
   status: attr('string'),
+  description: attr('string'),
+  owner: attr('string'),
+  versionNumber: attr(),
+  versions: attr(),
+  lastUpdated: attr('date', {
+    defaultValue() { return new Date().toLocaleDateString("en-US"); }}),
   dateSubmitted: attr('date', {
-    defaultValue() { return new Date().toLocaleDateString("en-US"); }
-  })
-
+    defaultValue() { return new Date().toLocaleDateString("en-US"); }}),
+  dateAccepted: attr('date', {
+    defaultValue() { return new Date().toLocaleDateString("en-US"); }}),
+  codevalue: attr('string'),
+  narrower: attr(),
+  AlertDate: attr('date', {
+    defaultValue() { return new Date().toLocaleDateString("en-US"); }}),
+  EffectiveDate: attr('date', {
+    defaultValue() { return new Date().toLocaleDateString("en-US"); }})
 });

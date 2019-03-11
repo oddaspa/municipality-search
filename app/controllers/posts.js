@@ -1,24 +1,28 @@
 import Controller from '@ember/controller';
 
 export default Controller.extend({
+  queryParams: ['description'],
+
   actions: {
     filterByName(param) {
       if (param !== '') {
         let tmp = this.store
         .query('post', {description: param }).then((results) => {
-          //console.log(filteredResults);
-          return {query: param, results: results.results};
+          return {query: param, results: results};
         });
-        //console.log(results);
+        //Debug in browser
+        console.log("Controller query:");
         console.log(tmp);
 
         return tmp;
       } else {
         console.log("no search");
-        return this.store
+        let tmp2 = this.store
           .findAll('post').then((results) => {
             return { query: param, results: results };
           });
+          return tmp2;
+
       }
     }
   }
