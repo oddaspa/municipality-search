@@ -15,6 +15,7 @@ export default Component.extend({
   value: 'one',
   actions: {
     colorChanged(value) {
+      this.controller.set('number', value);
       window.alert(`Value changed to ${value}`);
     }
   }

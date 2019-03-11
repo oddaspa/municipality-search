@@ -6,10 +6,11 @@ const {
 
 export default DS.Model.extend({
   // defined by https://register.geonorge.no/api/subregister/sosi-kodelister/kartverket/kommunenummer-alle.json
+  list: DS.belongsTo('list'),
   label: attr('string'),
   lang: attr('string'),
   itemclass: attr('string'),
-  uuid: attr('string'),
+  //id: attr('string'),
   status: attr('string'),
   description: attr('string'),
   owner: attr('string'),
