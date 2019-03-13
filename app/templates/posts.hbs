@@ -13,17 +13,16 @@
     </ul>
   </ListFilter>
 
-  <ListFilter class="box"
+  <RadioButton class="box"
     @filter={{action "filterByValid"}}
     as |filteredResults|
     >
+    <h2><i>Here are radio group!</i></h2>
     <ul class="results">
       {{#each filteredResults as |resUnit|}}
         <li><PostListing @post={{resUnit}} /></li>
       {{/each}}
     </ul>
-  </ListFilter>
-
-
+  </RadioButton>
 </div>
 {{outlet}}

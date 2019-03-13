@@ -27,22 +27,23 @@ export default Controller.extend({
           });
       }
     },
-  filterByValid(){
-    let param = "Gyldig";
-      return this.store.query('post', { status: param} )
+  filterByValid(checked){
+    if(checked){
+      return this.store.findAll('post' )
       .then(results => {
-        let myResults = results.toArray();
         var returnList = new Array();
         results.toArray().forEach((element) => {
-          if(element.status.toLowerCase() === param.toLowerCase()){
+          if(element.status.toLowerCase() === "gyldig"){
             returnList.push(element);
-            myResults = returnList;
           }
-        }
-      )
-      return {query: param, results: myResults};
+        })
+      return {query: "param", results: returnList};
       });
+    } else {
+      return this.store.findAll('post');
     }
+
   }
+}
 
 });

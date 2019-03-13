@@ -1,0 +1,20 @@
+<!--
+{{input
+  value=this.value
+  key-up=(action "handleFilterEntry")
+  class="light"
+  placeholder="Filter By Name"
+}}
+
+{{yield this.results}}
+-->
+
+
+
+{{input
+  type="checkbox"
+  checked=cbState
+  click=(action "handleFilterEntry")
+}}
+
+{{yield this.results}}
