@@ -16,13 +16,10 @@ export default Component.extend({
     handleFilterEntry(){
       let filterInputValue = this.value;
       let filterAction = this.filter;
-      //console.log(this.value);
       filterAction(filterInputValue).then((filterResults) => {
         if (filterResults.query === this.value) {
           this.set('results', filterResults.results);
         }
-        console.log("filter results:");
-        console.log(filterResults);
       });
     }
   }
