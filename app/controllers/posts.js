@@ -1,16 +1,13 @@
 import Controller from '@ember/controller';
 export default Controller.extend({
-  // DOES GET UPDATED
   queryParams: ['description'],
-  description: "Lillehammer",
+  description: "",
 
   actions: {
     filterByName(param) {
       if (param !== '') {
-        // TEST ONE
         return this.store.query('post', { description: param} )
         .then(results => {
-          // Checking each element after the query
           let myResults = results.toArray();
           var returnList = new Array();
           results.toArray().forEach((element) => {
@@ -18,7 +15,6 @@ export default Controller.extend({
               returnList.push(element);
               myResults = returnList;
             }
-
           }
         )
         return {query: param, results: myResults};
@@ -26,12 +22,26 @@ export default Controller.extend({
 
       } else {
         return this.store
-          .findAll('post')
-          .then((results) => {
+          .findAll('post').then((results) => {
             return { query: param, results: results };
-          })
-          ;
+          });
       }
+    },
+  filterByValid(){
+    let param = "Gyldig";
+      return this.store.query('post', { status: param} )
+      .then(results => {
+        let myResults = results.toArray();
+        var returnList = new Array();
+        results.toArray().forEach((element) => {
+          if(element.status.toLowerCase() === param.toLowerCase()){
+            returnList.push(element);
+            myResults = returnList;
+          }
+        }
+      )
+      return {query: param, results: myResults};
+      });
     }
   }
 

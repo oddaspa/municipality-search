@@ -13,7 +13,17 @@
     </ul>
   </ListFilter>
 
+  <ListFilter class="box"
+    @filter={{action "filterByValid"}}
+    as |filteredResults|
+    >
+    <ul class="results">
+      {{#each filteredResults as |resUnit|}}
+        <li><PostListing @post={{resUnit}} /></li>
+      {{/each}}
+    </ul>
+  </ListFilter>
 
-  <RadioButtons class="box"/>
+
 </div>
 {{outlet}}
