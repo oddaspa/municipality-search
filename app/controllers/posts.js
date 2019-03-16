@@ -8,7 +8,6 @@ export default Controller.extend({
       if (param !== '') {
         return this.store.query('post', { description: param} )
         .then(results => {
-          let myResults = results.toArray();
           var returnList = new Array();
           results.toArray().forEach((element) => {
             if(element.description.toLowerCase().includes(param.toLowerCase())){
@@ -27,23 +26,39 @@ export default Controller.extend({
           });
       }
     },
-  filterByValid(checked){
-    if(checked){
-      return this.store.findAll('post' )
-      .then(results => {
-        var returnList = new Array();
-        results.toArray().forEach((element) => {
-          if(element.status.toLowerCase() === "gyldig"){
-            returnList.push(element);
+
+    filterByValid(checked){
+      if(checked){
+        return this.store.findAll('post' )
+        .then(results => {
+          var returnList = new Array();
+          results.toArray().forEach((element) => {
+            if(element.status.toLowerCase() === "gyldig"){
+              returnList.push(element);
+            }
+          })
+        return {query: "param", results: returnList};
+        });
+      } else {
+        return this.store.findAll('post');
+      }
+    },
+
+    filterByNameAndButton(param, checked) {
+      return this.store.findAll('post' ).then(results => {
+        if(checked){
+          results = results.toArray().filter(element => element.status.toLowerCase() === "gyldig");
+          if (param !== ''){
+            results = results.filter(element => element.description.toLowerCase().includes(param.toLowerCase()));
           }
-        })
-      return {query: "param", results: returnList};
-      });
-    } else {
-      return this.store.findAll('post');
+
+        } else {
+          if (param !== ''){
+            results = results.toArray().filter(element => element.description.toLowerCase().includes(param.toLowerCase()));
+          }
+        }
+        return {query:param, results: results};
+      })
     }
-
-  }
 }
-
 });
