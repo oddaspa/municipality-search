@@ -2,18 +2,17 @@
 
 <div class="box-set">
 
-  <ListFilter class="box"
-    @filter={{action "filterByName"}}
+  <CombinedSearch class="box"
+    @filter={{action "filterByNameAndButton"}}
     as |filteredResults|
     >
     <ul class="results">
+      <h3><b>Output:</b></h3>
       {{#each filteredResults as |resUnit|}}
         <li><PostListing @post={{resUnit}} /></li>
       {{/each}}
     </ul>
-  </ListFilter>
+  </CombinedSearch>
 
-
-  <RadioButtons class="box"/>
 </div>
 {{outlet}}

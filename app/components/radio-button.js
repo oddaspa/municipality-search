@@ -1,8 +1,9 @@
 import Component from '@ember/component';
 
 export default Component.extend({
-  classNames: ['list-filter'],
+  classNames: ['radio-button'],
   value: '',
+  cbState: false,
   init() {
     this._super(...arguments);
     this.filter('').then((allResults) =>
@@ -13,12 +14,10 @@ export default Component.extend({
   // This is my filter
   actions: {
     handleFilterEntry(){
-      let filterInputValue = this.value;
+      this.toggleProperty('cbState');
       let filterAction = this.filter;
-      filterAction(filterInputValue).then((filterResults) => {
-        if (filterResults.query === this.value) {
+      filterAction(this.cbState).then((filterResults) => {
           this.set('results', filterResults.results);
-        }
       });
     }
   }

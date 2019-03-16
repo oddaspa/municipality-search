@@ -15,16 +15,13 @@ export default DS.Model.extend({
   owner: attr('string'),
   versionNumber: attr(),
   versions: attr(),
-  lastUpdated: attr('date', {
-    defaultValue() { return new Date().toLocaleDateString("en-US"); }}),
-  dateSubmitted: attr('date', {
-    defaultValue() { return new Date().toLocaleDateString("en-US"); }}),
-  dateAccepted: attr('date', {
-    defaultValue() { return new Date().toLocaleDateString("en-US"); }}),
+  lastUpdated: attr('date'),
+  dateSubmitted: attr('date'),
+  dateAccepted: attr('date'),
   codevalue: attr('string'),
   narrower: attr(),
-  AlertDate: attr('date', {
-    defaultValue() { return new Date().toLocaleDateString("en-US"); }}),
-  EffectiveDate: attr('date', {
-    defaultValue() { return new Date().toLocaleDateString("en-US"); }})
+  ValidTo: attr('date'),
+  ValidFrom: attr('date'),
+  AlertDate: attr('date'),
+  EffectiveDate: attr('date')
 });

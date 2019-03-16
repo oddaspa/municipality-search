@@ -5,4 +5,10 @@
   placeholder="Filter By Name"
 }}
 
+{{input
+  type="checkbox"
+  checked=cbState
+  click=(action "changeState")
+}}
+
 {{yield this.results}}

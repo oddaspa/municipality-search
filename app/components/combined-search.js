@@ -1,21 +1,26 @@
 import Component from '@ember/component';
 
+
 export default Component.extend({
-  classNames: ['list-filter'],
+  classNames: ['combined-search'],
   value: '',
+  cbState: false,
   init() {
     this._super(...arguments);
     this.filter('').then((allResults) =>
-    { this.set('results', allResults);
+    { this.set('results', allResults.results);
   });
 },
 
-  // This is my filter
   actions: {
+    changeState(){
+      this.toggleProperty('cbState');
+    },
+
     handleFilterEntry(){
       let filterInputValue = this.value;
       let filterAction = this.filter;
-      filterAction(filterInputValue).then((filterResults) => {
+      filterAction(filterInputValue, this.cbState).then((filterResults) => {
         if (filterResults.query === this.value) {
           this.set('results', filterResults.results);
         }
