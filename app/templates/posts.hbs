@@ -1,18 +1,21 @@
-<h1> This is our post route </h1>
-
-<div class="box-set">
-
+<div class="wrapper">
   <CombinedSearch class="box"
     @filter={{action "filterByNameAndButton"}}
     as |filteredResults|
     >
     <ul class="results">
-      <h3><b>Output:</b></h3>
+      <div class ="info-bar">
+        <span class = "info-bar-item1">MunNo:</span>
+        <span class = "info-bar-item1">Name:</span>
+        <span class = "info-bar-item2">Activated:</span>
+        <span class = "info-bar-item2">Discontinued:</span>
+      </div>
+
       {{#each filteredResults as |resUnit|}}
         <li><PostListing @post={{resUnit}} /></li>
       {{/each}}
+
     </ul>
   </CombinedSearch>
-
 </div>
 {{outlet}}

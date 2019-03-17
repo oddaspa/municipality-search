@@ -1,19 +1,15 @@
-<article class="listing">
 
-  <div class="details">
-    <h3>{{this.post.description}}</h3>
-    <div class="info-boxes">
-      <span class="info-box">No: {{this.post.label}} </span>
-      <span class="info-box">Status: <b>{{this.post.status}}</b> </span>
-    </div>
-    <div>
-      {{#if this.post.ValidTo}}
-        <span>Gyldig til: {{format-date this.post.ValidTo}} </span>
-      {{/if}}
-      {{#if this.post.ValidFrom}}
-        <span>Gyldig fra: {{format-date this.post.ValidFrom}} </span>
-      {{/if}}
+<div class="details">
+  <div class="info-boxes">
+    <span class="number-tag">{{this.post.label}} </span>
+    <span class="number-tag">{{this.post.description}}</span>
+
+    {{#if this.post.ValidFrom}}
+      <span class="additional-info2">{{format-date this.post.ValidFrom}} </span>
+    {{/if}}
+
+    {{#if this.post.ValidTo}}
+      <span class="additional-info1">{{format-date this.post.ValidTo}} </span>
+    {{/if}}
   </div>
-  </div>
-  <p> <i> More info about municipality</i></p>
-</article>
+</div>

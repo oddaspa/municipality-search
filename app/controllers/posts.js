@@ -12,11 +12,10 @@ export default Controller.extend({
           results.toArray().forEach((element) => {
             if(element.description.toLowerCase().includes(param.toLowerCase())){
               returnList.push(element);
-              myResults = returnList;
             }
           }
         )
-        return {query: param, results: myResults};
+        return {query: param, results: returnList};
         });
 
       } else {
